@@ -26,10 +26,12 @@ def solution(numbers, target):
     queue = deque()
     queue.append((0,-1))
     while queue:
+        # x : 합, y : 레벨
         x,y=queue.popleft()
         if y < len(numbers)-1:
             queue.append((x+numbers[y+1],y+1))
             queue.append((x-numbers[y+1],y+1))
+        # 탐색을 완료하고 target이 합과 같으면 1씩 증가
         if y == len(numbers)-1 and x==target:
             answer+=1
    
